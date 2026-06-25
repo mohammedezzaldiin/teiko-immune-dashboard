@@ -89,7 +89,7 @@ CREATE INDEX idx_counts_population ON cell_counts(population);
 
 def get_connection(db_path: str | None = None) -> sqlite3.Connection:
     """Return a SQLite connection with foreign keys enabled and row access by name."""
-    conn = sqlite3.connect(db_path or DB_PATH)
+    conn = sqlite3.connect(db_path or DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
     return conn
