@@ -1,8 +1,6 @@
-**Live dashboard:** https://teiko-immune-dashboard-hy3ttuvewtr69eisx8esqe.streamlit.app/ · 
-
-**Repo:** https://github.com/mohammedezzaldiin/teiko-immune-dashboard
-
 # Loblaw Bio — Immune Cell Population Analysis
+
+**🔗 Live dashboard:** https://teiko-immune-dashboard-hy3ttuvewtr69eisx8esqe.streamlit.app/ · **Repo:** https://github.com/mohammedezzaldiin/teiko-immune-dashboard
 
 A small, reproducible pipeline + dashboard for analyzing immune cell population
 counts from a clinical trial of **miraclib**. It loads `cell-count.csv` into a
@@ -160,14 +158,20 @@ the B-cell metric). It auto-builds `teiko.db` on first load if it's missing.
 
 **Live dashboard:** https://teiko-immune-dashboard-hy3ttuvewtr69eisx8esqe.streamlit.app/
 
-To deploy: push this repo to GitHub, go to share.streamlit.io, point it at
-`dashboard.py`, and paste the resulting URL above.
-
 ---
 
 ## Testing
 
-`make test` (or `pytest -q`) runs `test_pipeline.py`, which builds a throwaway DB
-and checks the core invariants: all tables populated, Part 2 percentages sum to
-100% per sample, the Part 3 cohort is correctly filtered, p/q-values are valid
-probabilities, and the Part 4 subset matches all baseline criteria.
+`make test` (or `pytest -q`) runs two suites:
+
+- **`test_pipeline.py`** — data-agnostic invariants that hold for *any* valid
+  input: all tables populated, Part 2 percentages sum to 100% per sample, the
+  Part 3 cohort is correctly filtered, p/q-values are valid probabilities, and the
+  Part 4 subset matches all baseline criteria.
+- **`test_real_data.py`** — ground-truth regression tests that lock in the exact
+  verified answers for the shipped 10,500-sample dataset (table counts, Part 3
+  cohort sizes, the Part 4 breakdowns, and the headline average B-cell count of
+  `10401.28`). These self-skip if a different dataset is in place, so they never
+  produce false failures.
+
+All 12 tests pass on the shipped data.
