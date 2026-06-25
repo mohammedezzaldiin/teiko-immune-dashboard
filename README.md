@@ -1,3 +1,7 @@
+**Live dashboard:** https://teiko-immune-dashboard-hy3ttuvewtr69eisx8esqe.streamlit.app/ · 
+
+**Repo:** https://github.com/mohammedezzaldiin/teiko-immune-dashboard
+
 # Loblaw Bio — Immune Cell Population Analysis
 
 A small, reproducible pipeline + dashboard for analyzing immune cell population
@@ -154,7 +158,7 @@ Streamlit app with four tabs: **Overview** (dataset composition), **Part 2**
 + stats table + significance call-out), **Part 4** (baseline subset + breakdowns +
 the B-cell metric). It auto-builds `teiko.db` on first load if it's missing.
 
-**Live dashboard:** _<add your Streamlit Community Cloud URL here after deploying>_
+**Live dashboard:** https://teiko-immune-dashboard-hy3ttuvewtr69eisx8esqe.streamlit.app/
 
 To deploy: push this repo to GitHub, go to share.streamlit.io, point it at
 `dashboard.py`, and paste the resulting URL above.
